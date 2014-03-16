@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% verbatim %}
+<html ng-cloak ng-app="blof" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+<head>
+    <link rel="stylesheet" href="/static/libs/angular/angular-csp.css"/>
+    <link rel="stylesheet" href="/static/libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/blof.css"/>
+    <title>Blof</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+    <div class="row" ng-controller="postController" >
+      <div id="blof-stream" class="col-6 col-sm-6 col-lg-6">
+          <blockquote ng-repeat="post in posts">
+            <p>{{post.body}}</p>
+            <small>{{post.user}} <span class="date" title="{{post.date}}"></span>
+                <button ng-if="authState.user == post.user" ng-click="delete(post.id)" type="button"class="btn btn-default btn-xs">delete</button>
+            </small>
+        </blockquote>
+
+    </div>
+    <div class="col-6 col-sm-6 col-lg-6">
+        <h1>Blof</h1>
+        <h5>Blog to enrage grammar nazis and confound spelling aficionados</h5>
+        <form class="form-horizontal">
+          <div class="form-group" ng-submit="submitPost">
+            <div class="col-lg-10">
+              <textarea ng-model="body" required class="form-control" rows="3" name="body"></textarea>
+            </div>
+          </div>
+          <button ng-click="create()" type="submit" class="btn btn-default">Antagonise</button>
+        </form>
+  <dl>
+      <dt>What?</dt>
+      <dd>Blof takes well mannered sentences and adds gramatical errors.</dd>
+      <dt>Why?</dt>
+      <dd>Some men want to watch the world burn, one sentence at a time.</dd>
+      <dt>Who?</dt>
+      <dd><a href="http://www.richardtier.com">Richard Tier</a> made this, and <a href="http://www.monofox.co.uk">monofox</a> - a social media platform for schools.</dd>
+  </dl>
+</div>
+</div>
+{% endverbatim %}
+<div class="navbar navbar-fixed-bottom" ng-controller="authController" ng-init="authState.user='{{user.username}}'">
+    {% verbatim %}
+    <div ng-show="authState.user" class="navbar-form navbar-right">
+        <input type="submit" class="btn btn-default" ng-click="logout()" value="logout {{authState.user}}"/>
+    </div>
+    <div ng-hide="authState.user">
+        <form id="id_auth_form" class="navbar-form navbar-right" ng-submit="login()">
+            <div class="form-group">
+                <input ng-model="username" required name="username" type="text" placeholder="username" class="form-control">
+            </div>
+            <div class="form-group">
+                <input ng-model="password" required name="password" type="password" placeholder="password" class="form-control">
+            </div>
+            <div class="btn-group">
+                <input type="submit" class="btn btn-default" value="login">
+                <input type="submit" class="btn btn-default" value="register" ng-click="register($event)">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="/static/libs/jquery/jquery.js"></script>
+<script src="/static/libs/underscore/underscore.js"></script>
+<script src="/static/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/static/libs/angular/angular.min.js"></script>
+<script src="/static/libs/angular-resource/angular-resource.min.js"></script>
+<script src="/static/libs/autofill-event/src/autofill-event.js"></script>
+<script src="/static/js/blof.js"></script>
+</html>
+{% endverbatim %}

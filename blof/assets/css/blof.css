@@ -1,0 +1,31 @@
+#blof-stream {
+    margin-top: 20px;
+    background: #f1f1f1;
+    border: 1px dotted #dedede;
+    overflow: auto;
+    webkit-box-shadow: 2px 2px 3px #dedede;
+    -moz-box-shadow: 2px 2px 3px #dedede;
+    box-shadow: 2px 2px 3px #dedede;
+    height:80vh;
+}
+.navbar {
+    border-top: 1px dotted #dedede;
+    background: #dedede;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.navbar button {
+    margin-top: 10px;
+}
+.date {
+    text-transform: lowercase
+}
+.row {
+    margin-left: 20px;
+}
+h1 {
+    font-weight: bold;
+}
+h6 {
+    color: gray;
+}
