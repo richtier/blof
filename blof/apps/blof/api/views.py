@@ -36,7 +36,7 @@ class PostView(viewsets.ModelViewSet):
     """view that serves posts"""
     model = models.PostModel
     serializer_class = serializers.PostSerializer
-    permission_classses = (permissions.IsOwner,)
+    permission_classes = (permissions.IsOwner,)
 
     def pre_save(self, obj):
         # add user to object if user is logged in
